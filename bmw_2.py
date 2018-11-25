@@ -109,48 +109,38 @@ def Up():
             backward=0
 
 try:
-    while True:
-        char = screen.getch()
-        if char == ord('q'):
-            break
-        elif char == ord('p'):
-            Stop()
-            LastKey='p'
-            time.sleep(0.5)
-            camera.capture('/home/pi/Documents/lucru/YoloV2NCS/data/image_captura_%s.jpg' %captura)
-            print ('Captura initializata')
-            print ('\n')
-            sys("cd YoloV2NCS && python3 ./detectionExample/Main.py --image ./data/image_captura_%s.jpg" % captura)
-            print ('Captura completa!%s imagini captate\n' %captura)
-            captura+=1
-            print ('\n')
-        elif char == ord(' '):
-            LastKey=' '
-            Stop()
-            GPIO.output(20,True)
-            GPIO.output(21,True)
-
-            time.sleep(0.5)
-
-            GPIO.output(20,False)
-            GPIO.output(21,False)
-
-            time.sleep(0.5)
-
-        elif char == curses.KEY_RIGHT:
-            Right() 
-           
-        elif char == curses.KEY_LEFT:
-            Left()
-
-        elif char == curses.KEY_UP:
-            Up()
-
-        elif char == curses.KEY_DOWN:
-            Down()
-        else:
-            print ('Incorect input')
-            print ('\n')
+    char = screen.getch()
+    if char == ord('p'):
+        LastKey='p'
+        time.sleep(0.5)
+        camera.capture('/home/pi/Documents/lucru/YoloV2NCS/data/image_captura_%s.jpg' %captura)
+        print ('Captura initializata')
+        print ('\n')
+        sys("cd YoloV2NCS && python3 ./detectionExample/Main.py --image ./data/image_captura_%s.jpg" % captura)
+        print ('Captura completa!%s imagini captate\n' %captura)
+        captura+=1
+        print ('\n')
+    elif char == ord(' '):
+        LastKey=' '
+        Stop()
+        GPIO.output(20,True)
+        GPIO.output(21,True)
+        time.sleep(0.5)
+        GPIO.output(20,False)
+        GPIO.output(21,False)
+        time.sleep(0.5)
+    elif char == curses.KEY_RIGHT:
+        Right()
+    elif char == curses.KEY_LEFT:
+        Left()
+    elif char == curses.KEY_UP:
+        Up()
+    elif char == curses.KEY_DOWN:
+        Down()
+    else:
+        print ('Incorect input')
+        print ('\n')
+        
 
 finally:
     # shut down cleanly 

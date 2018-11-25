@@ -114,7 +114,6 @@ try:
         if char == ord('q'):
             break
         elif char == ord('p'):
-            Stop()
             LastKey='p'
             time.sleep(0.5)
             camera.capture('/home/pi/Documents/lucru/YoloV2NCS/data/image_captura_%s.jpg' %captura)
